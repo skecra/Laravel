@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <table border="1">
+    <table class="table" border="1">
         <thead>
             <th>ID</th>
             <th>Name</th>
@@ -31,5 +31,6 @@
 
         </tbody>
     </table>
+    {{$cities->links()}}
 
 @endsection

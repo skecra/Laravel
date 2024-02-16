@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CityRequest;
 use Illuminate\Http\Request;
 use App\Models\City;
 
@@ -14,7 +15,7 @@ class CityController extends Controller
      */
     public function index()
     {
-        $cities = City::all();
+        $cities = City::query()->paginate(10);
         return view('cities.index', ['cities' => $cities]);
     }
 
@@ -34,7 +35,7 @@ class CityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CityRequest $request)
     {
 //        dd($request);
         City::create(['name' => $request->name, 'population' => $request->population]);

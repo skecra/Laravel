@@ -1,4 +1,4 @@
-<nav>
+<nav class="nav">
     <ul>
         <a href="/cities">Home</a>
         <a href="#">About</a>
