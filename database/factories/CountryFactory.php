@@ -3,12 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\City>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Country>
  */
-class CityFactory extends Factory
+class CountryFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,9 +17,7 @@ class CityFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->city(),
-            'population' => rand(1000, 25000999),
-            'country_id' => rand(1,50)
+            'name' => fake()->country(),
         ];
     }
 }

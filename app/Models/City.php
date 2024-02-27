@@ -9,4 +9,17 @@ class City extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function country(){
+        return $this->belongsTo(Country::class);
+    }
+
+    public function contacts()
+    {
+        return $this->hasMany(Contact::class);
+    }
+
 }
+
+
+

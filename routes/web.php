@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CountryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\CityController;
@@ -24,3 +26,5 @@ Route::get('/test', [TestController::class, 'Index']);
 Route::get('/test/{id}', [TestController::class, 'testId']);
 
 Route::resource('/cities', CityController::class);
+Route::resource('/countries', CountryController::class);
+Route::resource('/contacts', ContactController::class);
