@@ -41,14 +41,15 @@ class ContactController extends Controller
     public function store(Request $request)
     {
 //        dd($request);
-        $image_path = "/store" . $request->file('profile_image')->store('profile-image');
+        $image_path = "/storage" . $request->file('profile_image')->store('profile-image');
+        $image_path = preg_replace("/profile-image/", '', $image_path);
 
-        Contact::create(['name' => $request->name,
+        $new_contact = Contact::create(['name' => $request->name,
             'email' => $request->email,
             'phone_number' => $request->phone_number,
             'city_id' => $request->city_id,
             'profile_image' => $image_path]);
-        return redirect('/cities');
+        return redirect('/contacts/'.$new_contact->id);
 
     }
 
@@ -60,7 +61,7 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        //
+        return view('contacts.show', ['contact' => $contact]);
     }
 
     /**
