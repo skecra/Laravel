@@ -155,3 +155,7 @@ prikaz slike u src pisemo {{ asset($contact->profile_image) asset metod kreira p
 
 1:23
 
+
+rjesenje za ovo kreiranje linka za storage ovo kucati u cmd 
+mklink /D C:\Users\adminPC\Desktop\test\naziv-projekta\Laravel\public\storage C:\Users\adminPC\Desktop\test\naziv-projekta\Laravel\storage\app\profile-image
+
