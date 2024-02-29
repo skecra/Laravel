@@ -15,10 +15,19 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $contacts = Contact::query()->paginate(10);
-        return view('contacts.index', ['contacts' => $contacts]);
+        $cities = City::all();
+        $contacts = Contact::query()
+        ->when($request->filter_name, function($query) use($request){
+            $term = strtolower($request->filter_name);
+            $query->whereRaw('lower(name) like (?) ', ["%{$term}%"]);
+        })
+        ->when($request->city_id, function($query) use($request){
+            $query->where('city_id', '=', $request->city_id);
+        })
+        ->paginate(10);
+        return view('contacts.index', compact('cities', 'contacts'));
     }
 
     /**

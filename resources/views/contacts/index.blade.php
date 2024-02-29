@@ -2,6 +2,29 @@
 
 @section('content')
 
+<form class="form-control m-2" action="/contacts" method="GET">
+<div class="row">
+    <div class="col-4">
+        <input type="text" value='{{request()->filter_name}}' name="filter_name" class="input form-control col-4">
+    </div>
+    <div class="col-4">
+        <select name="city_id" class="form-control col-4" id="">
+            <option value="">--chose city--</option>
+            @foreach ($cities as $c)
+
+                <option {{$c->id == request()->city_id ? 'selected' : ''}} value="{{$c->id}}">{{$c->name}}</option>
+                
+            @endforeach
+        </select>
+    </div>
+    <div class="col-4">
+        <button class="btn btn-info">Search</button>
+    </div>
+</div>
+
+
+</form>
+
     <table class="table" border="1">
         <thead>
         <th>ID</th>
@@ -38,6 +61,6 @@
 
         </tbody>
     </table>
-    {{$contacts->links()}}
+    {{$contacts->appends(request()->query())->links()}}
 
 @endsection

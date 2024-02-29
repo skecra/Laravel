@@ -19,6 +19,11 @@ class City extends Model
         return $this->hasMany(Contact::class);
     }
 
+
+    public function getContactsCountAttribute(){
+        $this->contacts->count();
+    }
+
 }
 
 
