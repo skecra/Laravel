@@ -7,6 +7,8 @@ use App\Models\Contact;
 use App\Http\Requests\StoreContactRequest;
 use App\Http\Requests\UpdateContactRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\welcomeMail;
 
 class ContactController extends Controller
 {
@@ -58,6 +60,7 @@ class ContactController extends Controller
             'phone_number' => $request->phone_number,
             'city_id' => $request->city_id,
             'profile_image' => $image_path]);
+            Mail::to('lukaradulovic1998@gmail.com')->send(new welcomeMail());
         return redirect('/contacts/'.$new_contact->id);
 
     }
